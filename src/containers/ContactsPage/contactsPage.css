@@ -1,0 +1,12 @@
+.contacts-page {
+  display: flex;
+  padding: 20px 80px;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* background: #f7f7f7; */
+}
+
+.loading-wrapper {
+  height: calc(100vh - 112px);
+  display: flex;
+}

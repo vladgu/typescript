@@ -1,0 +1,27 @@
+.facebook {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.facebook:hover {
+  background-color: #dfe3ee;
+  border-color: #3b5998;
+  color: #3b5998;
+}
+.d-flex {
+  height: 100vh;
+  background: #f7f7f7;
+}
+
+.form {
+  border: 2px solid #6c757d;
+  border-radius: 10px;
+  box-shadow: 0 15px 50px #6c757d9a;
+}
+
+.form-group-btn {
+  text-align: center;
+}
+.btn {
+  width: 100%;
+}

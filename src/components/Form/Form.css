@@ -1,0 +1,12 @@
+.form-row {
+  width: 200px;
+  display: flex;
+
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.close {
+  cursor: pointer;
+  align-self: flex-end;
+}

@@ -1,0 +1,37 @@
+.navbar {
+  justify-content: flex-end;
+  height: 72px;
+}
+
+.navbar-collapse {
+  justify-content: flex-end;
+}
+
+.show {
+  border-bottom: 10px solid #dfe3ee;
+  padding: 20px;
+  box-shadow: 0px 10px 20px #343a40;
+  background: #343a40;
+}
+
+.nav-link {
+  cursor: pointer;
+  justify-self: flex-end;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.avatar {
+  border: 2px solid #8b9dc3;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+}
+
+.active {
+  border-bottom: 1px solid #dfe3ee;
+}

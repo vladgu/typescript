@@ -1,0 +1,6 @@
+.main-page {
+  min-height: calc(100vh - 72px);
+  display: flex;
+  justify-content: center;
+  background: #f7f7f7;
+}
