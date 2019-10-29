@@ -5,23 +5,13 @@ import { Field, reduxForm } from "redux-form";
 import validate from "../../utils/formValidate";
 
 import "./Form.css";
+import { RootState } from "../../reducers";
 
 export type loginProps = {
   input: any;
   label: any;
   type: any;
 };
-
-export interface FormProps {
-  handleSubmit: any;
-  pristine: any;
-  reset: any;
-  submitting: any;
-  valid: boolean;
-  anyTouched: boolean;
-  error: any;
-  contactGit: any;
-}
 
 const login = ({ input, label, type }: loginProps) => (
   <div>
@@ -32,24 +22,15 @@ const login = ({ input, label, type }: loginProps) => (
   </div>
 );
 
-let Form = ({
-  handleSubmit,
-  pristine,
-  reset,
-  submitting,
-  valid,
-  anyTouched,
-  error
-}: FormProps) => {
+let Form = (props: any) => {
   // const { handleSubmit, pristine, reset, submitting } = props;
 
   return (
     <form
       className="form-card-2"
-      onSubmit={handleSubmit((data: any) => console.log(data))}
+      onSubmit={props.handleSubmit((data: any) => console.log(data))}
     >
-      <i className="far fa-window-close close"></i>
-      {/* <i className="far fa-window-close close" onClick={click}></i> */}
+      <i className="far fa-window-close close" onClick={props.click}></i>
       <div className="form-row">
         <Field
           label="Login"
@@ -58,8 +39,8 @@ let Form = ({
           type="text"
           style={{ width: "110%" }}
         />
-        {!valid && anyTouched ? (
-          <span style={{ color: "red" }}>{error}</span>
+        {!props.valid && props.anyTouched ? (
+          <span style={{ color: "red" }}>{props.error}</span>
         ) : null}
       </div>
       <div className="form-row">
@@ -124,25 +105,29 @@ let Form = ({
         </div>
       </div>
       <div className="form-row">
-        <button type="submit" disabled={pristine || submitting}>
+        <button type="submit" disabled={props.pristine || props.submitting}>
           Submit
         </button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>
+        <button
+          type="button"
+          disabled={props.pristine || props.submitting}
+          onClick={props.reset}
+        >
           Clear Values
         </button>
       </div>
     </form>
   );
 };
-const mapStateToProps = ({ contactGit }: FormProps) => {
+const mapStateToProps = ({ contactGit }: RootState) => {
   return {
     initialValues: contactGit.contact
   };
 };
 
-Form = reduxForm({
-  form: "form",
-  validate
-})(Form);
-
-export default connect(mapStateToProps)(Form);
+export default connect(mapStateToProps)(
+  reduxForm({
+    form: "form",
+    validate
+  })(Form)
+);
