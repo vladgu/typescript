@@ -5,9 +5,9 @@ import { throttle } from "lodash";
 import { getContacts } from "../../actions";
 import ContactPageCard from "../../components/ContactPageCard";
 import Loader from "../../components/Loader";
+import { RootState } from "../../reducers";
 
 import "./contactsPage.css";
-import { RootState } from "../../reducers";
 
 export type ContactsPageProps = {
   getContacts: any;

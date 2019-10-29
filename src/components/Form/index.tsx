@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 
 import validate from "../../utils/formValidate";
+import { RootState } from "../../reducers";
 
 import "./Form.css";
-import { RootState } from "../../reducers";
 
 export type loginProps = {
   input: any;
@@ -23,8 +23,6 @@ const login = ({ input, label, type }: loginProps) => (
 );
 
 let Form = (props: any) => {
-  // const { handleSubmit, pristine, reset, submitting } = props;
-
   return (
     <form
       className="form-card-2"
