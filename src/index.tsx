@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
-import reduxThunk from "redux-thunk";
 import createSagaMiddleware from "redux-saga";
 import * as serviceWorker from "./serviceWorker";
 
@@ -13,17 +12,19 @@ import sagas from "./sagas";
 
 import "./index.css";
 
-const composeEnhancers =
-  typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
-    : compose;
+// const composeEnhancers =
+//   typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+//     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
+//     : compose;
 
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(
-  reducer,
-  composeEnhancers(applyMiddleware(reduxThunk, sagaMiddleware))
-);
+// const store = createStore(
+//   reducer,
+//   composeEnhancers(applyMiddleware(sagaMiddleware))
+// );
+
+const store = createStore(reducer, applyMiddleware(sagaMiddleware));
 
 sagaMiddleware.run(sagas);
 
