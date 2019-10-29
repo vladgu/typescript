@@ -1,5 +1,4 @@
-import { takeLatest } from "redux-saga";
-import { put } from "redux-saga/effects";
+import { put, takeLatest } from "redux-saga/effects";
 
 import { INITIATE_LOGOUT, LOGOUT } from "../actions/actionTypes";
 
