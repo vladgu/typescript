@@ -48,8 +48,6 @@
     "@types/redux-devtools-extension": "^2.13.2",
     "@types/redux-form": "^8.1.9",
     "@types/redux-saga": "^0.10.5",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb-typescript-prettier": "^1.4.0",
     "prettier": "^1.18.2",
     "redux-devtools-extension": "^2.13.8"
   }
