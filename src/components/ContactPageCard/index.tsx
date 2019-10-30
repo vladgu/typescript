@@ -1,8 +1,5 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-
-import { RootState } from "../../reducers";
 
 import "./contactPageCard.css";
 
@@ -17,7 +14,7 @@ const PageCard = ({ login, avatar_url, html_url, ...rest }: PageCardTypes) => {
   const goToCard = () => {
     rest.history.push("/contacts/" + login.toLowerCase());
   };
-
+  console.log(rest);
   return (
     <div className="page-card" onClick={goToCard}>
       <h3>{login}</h3>
@@ -30,10 +27,4 @@ const PageCard = ({ login, avatar_url, html_url, ...rest }: PageCardTypes) => {
   );
 };
 
-const mapStateToProps = ({ contactsReducer }: RootState) => {
-  return {
-    contactsList: contactsReducer.contactsList
-  };
-};
-
-export default connect(mapStateToProps)(withRouter(PageCard));
+export default withRouter(PageCard);
