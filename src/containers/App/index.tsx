@@ -22,7 +22,6 @@ import { RootState } from "../../reducers";
 
 // const App = ({ logged, userInfo, ...props }: AppTypes) => {
 const App = (props: any) => {
-  console.log(props);
   useEffect(() => {
     const isUserInfoLs = localStorage.getItem("userKey");
     if (isUserInfoLs) {

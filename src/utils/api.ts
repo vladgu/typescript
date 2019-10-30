@@ -16,7 +16,6 @@ export const axiosGit = Axios.create({
 
 axiosGit.interceptors.request.use((config: any) => {
   config.headers.Authorization = config.xsrfHeaderName;
-  // console.log('Request was sent to Git', config)
   localStorage.setItem("token", config.headers.Authorization);
   return config;
 });
