@@ -37,7 +37,7 @@ export function fbLogin() {
   };
 }
 
-export function fbLoginSuccess(payload: any) {
+export function fbLoginSuccess(payload: object) {
   return {
     type: FB_LOGIN_SUCCESS,
     payload
@@ -53,7 +53,7 @@ export function fbLoginFail(payload: any) {
 
 // AUTH FROM LOCALSTORAGE
 
-export function autnFromLs(payload: any) {
+export function autnFromLs(payload: object) {
   return {
     type: AUTH_FROM_LS,
     payload
@@ -74,7 +74,7 @@ export function requestContacts() {
   };
 }
 
-export function requestContactsSuccess(payload: any) {
+export function requestContactsSuccess(payload: object[]) {
   return {
     type: REQ_CONT_SUCCESS,
     payload
@@ -90,7 +90,7 @@ export function requestContactsFail(payload: any) {
 
 // GETTING CONTACT FROM GIT
 
-export function getContact(payload: any) {
+export function getContact(payload: string) {
   return {
     type: INITIATE_GETTING_ONE_CONTACTS,
     payload
@@ -103,7 +103,7 @@ export function requestContact() {
   };
 }
 
-export function requestContactSuccess(payload: any) {
+export function requestContactSuccess(payload: object) {
   return {
     type: REQ_ONE_RELOAD_SUCCESS,
     payload

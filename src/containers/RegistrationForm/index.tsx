@@ -7,21 +7,28 @@ import { RootState } from "../../reducers";
 
 import "./registrationForm.css";
 
-const Regform = (props: any) => {
+type RegformTypes = {
+  logged: boolean;
+  isFetching: boolean;
+  history: any;
+  facebookLogin: any;
+};
+
+const Regform = ({ logged, isFetching, ...rest }: RegformTypes) => {
   useEffect(() => {
-    if (props.logged && props.history.location.pathname === "/login") {
-      props.history.push("/");
+    if (logged && rest.history.location.pathname === "/login") {
+      rest.history.push("/");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   });
   const toRegistrate = (event: any) => {
     event.preventDefault();
-    props.facebookLogin();
+    rest.facebookLogin();
   };
 
   return (
     <div className="d-flex justify-content-center align-items-center">
-      {!props.isFetching ? (
+      {!isFetching ? (
         <form className="form p-4">
           <div className="form-group">
             <label htmlFor="exampleDropdownFormEmail2">Email address</label>

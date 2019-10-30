@@ -6,22 +6,25 @@ import { RootState } from "../../reducers";
 
 import "./contactPageCard.css";
 
-const PageCard = (props: any) => {
+type PageCardTypes = {
+  login?: any;
+  avatar_url?: string;
+  html_url?: string;
+  history: any;
+};
+
+const PageCard = ({ login, avatar_url, html_url, ...rest }: PageCardTypes) => {
   const goToCard = () => {
-    props.history.push("/contacts/" + props.login.toLowerCase());
+    rest.history.push("/contacts/" + login.toLowerCase());
   };
 
   return (
     <div className="page-card" onClick={goToCard}>
-      <h3>{props.login}</h3>
-      <img
-        src={props.avatar_url}
-        alt="USER_PHOTO"
-        className="user-photo center"
-      />
+      <h3>{login}</h3>
+      <img src={avatar_url} alt="USER_PHOTO" className="user-photo center" />
       <p>
         <span className="text">Link: </span>
-        {props.html_url}
+        {html_url}
       </p>
     </div>
   );

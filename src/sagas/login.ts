@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 
 import { INITIATE_LOGIN } from "../actions/actionTypes";
-import { axios } from "../utils/axiosConfig";
+import { axios } from "../utils/api";
 import { fbLogin, fbLoginSuccess, fbLoginFail } from "../actions";
 
 function handle() {

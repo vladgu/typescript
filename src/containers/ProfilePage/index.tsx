@@ -5,7 +5,7 @@ import { RootState } from "../../reducers";
 
 import "./profilePage.css";
 
-export type ProfilePageProps = {
+type ProfilePageProps = {
   userInfo: any;
 };
 

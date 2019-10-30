@@ -9,23 +9,32 @@ import { RootState } from "../../reducers";
 
 import "./contactCard.css";
 
-// export interface CardProps {
-//   contactsReducer: any;
-//   contactGit: any;
-// }
+type CardTypes = {
+  contactsList: object[];
+  requestContactSuccess: any;
+  match: any;
+  getContact: any;
+  isFetching: boolean;
+  contact: any;
+  click: any;
+};
 
 const portal: HTMLElement | null = document.getElementById("portal");
 
-let Card = (props: any) => {
+let Card = ({
+  contactsList,
+  isFetching,
+  contact,
+  click,
+  ...rest
+}: CardTypes) => {
   useEffect(() => {
-    if (props.contactsList.length) {
-      props.requestContactSuccess(
-        props.contactsList.find(
-          (obj: any) => obj.login === props.match.params.name
-        )
+    if (contactsList.length) {
+      rest.requestContactSuccess(
+        contactsList.find((obj: any) => obj.login === rest.match.params.name)
       );
     } else {
-      props.getContact(props.match.params.name);
+      rest.getContact(rest.match.params.name);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -34,21 +43,21 @@ let Card = (props: any) => {
 
   return (
     <div className="card-box-2">
-      {!props.isFetching && props.contact ? (
+      {!isFetching && contact ? (
         <div className="page-card-2">
           <i
             className="fas fa-edit edit-styles"
             onClick={() => onClickHandler(!clicked)}
           />
-          <h1 className="user-name center">{props.match.params.name}</h1>
+          <h1 className="user-name center">{rest.match.params.name}</h1>
           <img
-            src={props.contact.avatar_url}
+            src={contact.avatar_url}
             alt="USER_PHOTO"
             className="user-photo center"
           />
           <p>
             <span className="text">Link: </span>
-            {props.contact.html_url}
+            {contact.html_url}
           </p>
         </div>
       ) : (
@@ -56,7 +65,7 @@ let Card = (props: any) => {
       )}
       {clicked && portal
         ? ReactDOM.createPortal(
-            <Form click={() => onClickHandler(!clicked)} {...props} />,
+            <Form click={() => onClickHandler(!clicked)} {...click} />,
             portal
           )
         : null}

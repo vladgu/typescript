@@ -13,11 +13,18 @@ import { routes } from "../../router";
 import Header from "../../components/header/index";
 import { RootState } from "../../reducers";
 
+// type AppTypes = {
+//   autnFromLs: any;
+//   logged: boolean;
+//   userInfo: any;
+// };
+
+// const App = ({ logged, userInfo, ...rest }: AppTypes) => {
 const App = (props: any) => {
   useEffect(() => {
-    const isUserInfo = localStorage.getItem("userKey");
-    if (isUserInfo) {
-      props.autnFromLs(JSON.parse(isUserInfo));
+    const isUserInfoLs = localStorage.getItem("userKey");
+    if (isUserInfoLs) {
+      props.autnFromLs(JSON.parse(isUserInfoLs));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

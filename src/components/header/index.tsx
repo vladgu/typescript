@@ -7,7 +7,12 @@ import { routes } from "../../router";
 
 import "./header.css";
 
-const header = (props: any) => (
+type headerTypes = {
+  userInfo: any;
+  logout: any;
+};
+
+const header = ({ userInfo, logout }: headerTypes) => (
   <header>
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
       <button
@@ -55,10 +60,10 @@ const header = (props: any) => (
           <li className="nav-item nav-link">
             <img
               className="avatar"
-              src={props.userInfo.photo}
+              src={userInfo.photo}
               alt="USER_AVATAR"
               title="Logout"
-              onClick={props.logout}
+              onClick={logout}
             />
           </li>
         </ul>

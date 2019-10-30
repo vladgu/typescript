@@ -9,7 +9,7 @@ import { RootState } from "../../reducers";
 
 import "./contactsPage.css";
 
-export type ContactsPageProps = {
+type ContactsPageProps = {
   getContacts: any;
   contactsList: any;
   isFetching: any;
@@ -56,7 +56,7 @@ const ContactsPage = ({
       </div>
 
       {searchArr.length ? (
-        searchArr.map((obj, index) => (
+        searchArr.map((obj: any, index: number) => (
           <ContactPageCard key={String(index)} {...obj} />
         ))
       ) : !isFetching ? (

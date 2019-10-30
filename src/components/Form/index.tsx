@@ -2,18 +2,18 @@ import React from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 
-import validate from "../../utils/formValidate";
+import validate from "../../utils/validation";
 import { RootState } from "../../reducers";
 
 import "./Form.css";
 
-export type loginProps = {
-  input: any;
-  label: any;
-  type: any;
+type loginPropsTypes = {
+  input: object;
+  label: string;
+  type: string;
 };
 
-const login = ({ input, label, type }: loginProps) => (
+const loginComponent = ({ input, label, type }: loginPropsTypes) => (
   <div>
     <label>{label}</label>
     <div>
@@ -22,23 +22,43 @@ const login = ({ input, label, type }: loginProps) => (
   </div>
 );
 
-let Form = (props: any) => {
+type FormPropsTypes = {
+  click?: any;
+  pristine: boolean;
+  submitting: boolean;
+  reset: any;
+  valid: boolean;
+  anyTouched: boolean;
+  error: string;
+  handleSubmit: any;
+};
+
+let Form = ({
+  click,
+  pristine,
+  submitting,
+  reset,
+  valid,
+  anyTouched,
+  error,
+  handleSubmit
+}: FormPropsTypes) => {
   return (
     <form
       className="form-card-2"
-      onSubmit={props.handleSubmit((data: any) => console.log(data))}
+      onSubmit={handleSubmit((data: object) => console.log(data))}
     >
-      <i className="far fa-window-close close" onClick={props.click}></i>
+      <i className="far fa-window-close close" onClick={click}></i>
       <div className="form-row">
         <Field
           label="Login"
           name="login"
-          component={login}
+          component={loginComponent}
           type="text"
           style={{ width: "110%" }}
         />
-        {!props.valid && props.anyTouched ? (
-          <span style={{ color: "red" }}>{props.error}</span>
+        {!valid && anyTouched ? (
+          <span style={{ color: "red" }}>{error}</span>
         ) : null}
       </div>
       <div className="form-row">
@@ -103,14 +123,10 @@ let Form = (props: any) => {
         </div>
       </div>
       <div className="form-row">
-        <button type="submit" disabled={props.pristine || props.submitting}>
+        <button type="submit" disabled={pristine || submitting}>
           Submit
         </button>
-        <button
-          type="button"
-          disabled={props.pristine || props.submitting}
-          onClick={props.reset}
-        >
+        <button type="button" disabled={pristine || submitting} onClick={reset}>
           Clear Values
         </button>
       </div>

@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 
-import { axiosGit } from "../utils/axiosConfig";
+import { axiosGit } from "../utils/api";
 import { INITIATE_GETTING_CONTACTS } from "../actions/actionTypes";
 import {
   requestContacts,
