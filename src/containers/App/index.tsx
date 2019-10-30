@@ -14,13 +14,15 @@ import Header from "../../components/header/index";
 import { RootState } from "../../reducers";
 
 // type AppTypes = {
-//   autnFromLs: any;
+//   autnFromLs: () => void;
 //   logged: boolean;
 //   userInfo: any;
+//   props: any;
 // };
 
-// const App = ({ logged, userInfo, ...rest }: AppTypes) => {
+// const App = ({ logged, userInfo, ...props }: AppTypes) => {
 const App = (props: any) => {
+  console.log(props);
   useEffect(() => {
     const isUserInfoLs = localStorage.getItem("userKey");
     if (isUserInfoLs) {

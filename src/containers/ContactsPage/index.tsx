@@ -15,7 +15,7 @@ type ContactsPageProps = {
   isFetching: any;
 };
 
-const throttled = throttle((value: any, foo: any) => foo(value), 1000);
+const throttled = throttle((value: string, foo: any) => foo(value), 1000);
 
 const ContactsPage = ({
   getContacts,
@@ -29,7 +29,7 @@ const ContactsPage = ({
 
   const [searchArr, setSearchArr] = useState([]);
 
-  const showUsers = (value: any) => {
+  const showUsers = (value: string) => {
     setSearchArr(
       contactsList.filter(
         (elem: any) => elem.login.startsWith(value.trim()) && value.length
