@@ -12,19 +12,20 @@ import sagas from "./sagas";
 
 import "./index.css";
 
-// const composeEnhancers =
-//   typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-//     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
-//     : compose;
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+  }
+}
+
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const sagaMiddleware = createSagaMiddleware();
 
-// const store = createStore(
-//   reducer,
-//   composeEnhancers(applyMiddleware(sagaMiddleware))
-// );
-
-const store = createStore(reducer, applyMiddleware(sagaMiddleware));
+const store = createStore(
+  reducer,
+  composeEnhancer(applyMiddleware(sagaMiddleware))
+);
 
 sagaMiddleware.run(sagas);
 

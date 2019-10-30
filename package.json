@@ -38,14 +38,16 @@
     ]
   },
   "devDependencies": {
-    "@types/react": "^16.9.11",
-    "@types/react-dom": "^16.9.3",
-    "@types/redux-saga": "^0.10.5",
     "@types/jest": "24.0.20",
     "@types/lodash": "^4.14.144",
     "@types/node": "12.11.7",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.3",
     "@types/react-redux": "^7.1.5",
     "@types/react-router-dom": "^5.1.0",
-    "@types/redux-form": "^8.1.9"
+    "@types/redux-devtools-extension": "^2.13.2",
+    "@types/redux-form": "^8.1.9",
+    "@types/redux-saga": "^0.10.5",
+    "redux-devtools-extension": "^2.13.8"
   }
 }
