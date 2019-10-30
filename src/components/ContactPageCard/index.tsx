@@ -14,7 +14,7 @@ const PageCard = ({ login, avatar_url, html_url, ...rest }: PageCardTypes) => {
   const goToCard = () => {
     rest.history.push("/contacts/" + login.toLowerCase());
   };
-  console.log(rest);
+  // console.log(rest);
   return (
     <div className="page-card" onClick={goToCard}>
       <h3>{login}</h3>
