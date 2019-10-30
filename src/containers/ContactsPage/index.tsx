@@ -57,7 +57,7 @@ const ContactsPage = ({
 
       {searchArr.length ? (
         searchArr.map((obj: any, index: number) => (
-          <ContactPageCard key={String(index)} {...obj} />
+          <ContactPageCard key={String(index + 10)} {...obj} />
         ))
       ) : !isFetching ? (
         contactsList.map((obj: any, index: number) => (
