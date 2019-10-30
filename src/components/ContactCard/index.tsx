@@ -21,7 +21,7 @@ type CardTypes = {
 
 const portal: HTMLElement | null = document.getElementById("portal");
 
-let Card = ({
+const Card = ({
   contactsList,
   isFetching,
   contact,
