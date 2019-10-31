@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import { connectRouter } from "connected-react-router";
 import { reducer as formReducer, FormStateMap } from "redux-form";
 import loginReducer, { State as LoginState } from "./loginLogout";
 import contactsReducer, { State as ContactsState } from "./contacts";
@@ -11,9 +12,12 @@ export type RootState = {
   form: FormStateMap;
 };
 
-export default combineReducers<RootState>({
-  loginReducer,
-  contactsReducer,
-  contactGit,
-  form: formReducer
-});
+const createRootReducer = (history: any) =>
+  combineReducers({
+    router: connectRouter(history),
+    loginReducer,
+    contactsReducer,
+    contactGit,
+    form: formReducer
+  });
+export default createRootReducer;

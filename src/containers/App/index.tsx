@@ -13,15 +13,15 @@ import { routes } from "../../router";
 import Header from "../../components/header/index";
 import { RootState } from "../../reducers";
 
-// type AppTypes = {
-//   autnFromLs: () => void;
-//   logged: boolean;
-//   userInfo: any;
-//   props: any;
-// };
+type AppTypes = {
+  autnFromLs: (a: any) => void;
+  logged: boolean;
+  userInfo: any;
+};
 
-// const App = ({ logged, userInfo, ...props }: AppTypes) => {
-const App = (props: any) => {
+const App = ({ logged, userInfo, ...props }: AppTypes) => {
+  // const App = (props: any) => {
+  console.log(props);
   useEffect(() => {
     const isUserInfoLs = localStorage.getItem("userKey");
     if (isUserInfoLs) {
@@ -32,9 +32,7 @@ const App = (props: any) => {
 
   return (
     <>
-      {props.logged && props.userInfo ? (
-        <Header userInfo={props.userInfo} />
-      ) : null}
+      {logged && userInfo ? <Header userInfo={userInfo} /> : null}
       <Switch>
         <PrivateRouter
           exact
