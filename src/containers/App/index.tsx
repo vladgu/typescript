@@ -22,9 +22,9 @@ type AppTypes = {
 
 const App = ({ logged, userInfo, ...props }: AppTypes) => {
   useEffect(() => {
-    const isUserInfoLs = localStorage.getItem("userKey");
-    if (isUserInfoLs) {
-      props.autnFromLs(JSON.parse(isUserInfoLs));
+    const isUserInfoInLs = localStorage.getItem("userKey");
+    if (isUserInfoInLs) {
+      props.autnFromLs(JSON.parse(isUserInfoInLs));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
