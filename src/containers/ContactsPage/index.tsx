@@ -42,7 +42,7 @@ const ContactsPage = ({
       <div className="input-group mb-3" style={{ margin: "20px" }}>
         <div className="input-group-prepend">
           <span className="input-group-text" id="basic-addon1">
-            @
+            <i className="fas fa-user"></i>
           </span>
         </div>
         <input
