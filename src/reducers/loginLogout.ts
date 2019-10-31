@@ -7,7 +7,7 @@ import {
 } from "../actions/actionTypes";
 
 export type State = {
-  logged: any;
+  logged: boolean;
   userInfo: any;
   isFetching: boolean;
 };
