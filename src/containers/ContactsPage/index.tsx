@@ -84,7 +84,7 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ContactsPage);
+)(React.memo(ContactsPage));
 
 // [
 //     {
