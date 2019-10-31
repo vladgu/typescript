@@ -10,9 +10,9 @@ import { RootState } from "../../reducers";
 import "./contactsPage.css";
 
 type ContactsPageProps = {
-  getContacts: any;
-  contactsList: any;
-  isFetching: any;
+  getContacts: () => void;
+  contactsList: [];
+  isFetching: boolean;
 };
 
 const throttled = throttle((value: string, foo: any) => foo(value), 1000);

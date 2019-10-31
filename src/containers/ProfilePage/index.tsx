@@ -6,7 +6,19 @@ import { RootState } from "../../reducers";
 import "./profilePage.css";
 
 type ProfilePageProps = {
-  userInfo: any;
+  userInfo: {
+    title: string;
+    name: string;
+    surname: string;
+    photo: string;
+    birthday: {
+      mdy: string;
+    };
+    age: string;
+    region: string;
+    email: string;
+    phone: string;
+  };
 };
 
 const ProfilePage = ({ userInfo }: ProfilePageProps) => {

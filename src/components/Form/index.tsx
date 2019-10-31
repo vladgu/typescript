@@ -23,10 +23,10 @@ const loginComponent = ({ input, label, type }: loginPropsTypes) => (
 );
 
 type FormPropsTypes = {
-  click?: any;
+  click?: () => void;
   pristine: boolean;
   submitting: boolean;
-  reset: any;
+  reset: () => void;
   valid: boolean;
   anyTouched: boolean;
   error: string;

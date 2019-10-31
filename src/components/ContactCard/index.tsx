@@ -11,11 +11,14 @@ import "./contactCard.css";
 
 type CardTypes = {
   contactsList: object[];
-  requestContactSuccess: any;
+  requestContactSuccess: (a: any) => void;
+  getContact: (a: any) => void;
   match: any;
-  getContact: any;
   isFetching: boolean;
-  contact: any;
+  contact: {
+    avatar_url: string;
+    html_url: string;
+  };
   click: any;
 };
 
@@ -23,6 +26,8 @@ const portal: HTMLElement | null = document.getElementById("portal");
 
 const Card = ({
   contactsList,
+  requestContactSuccess,
+  getContact,
   isFetching,
   contact,
   click,
@@ -30,11 +35,11 @@ const Card = ({
 }: CardTypes) => {
   useEffect(() => {
     if (contactsList.length) {
-      rest.requestContactSuccess(
+      requestContactSuccess(
         contactsList.find((obj: any) => obj.login === rest.match.params.name)
       );
     } else {
-      rest.getContact(rest.match.params.name);
+      getContact(rest.match.params.name);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

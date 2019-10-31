@@ -10,11 +10,16 @@ import "./registrationForm.css";
 type RegformTypes = {
   logged: boolean;
   isFetching: boolean;
+  facebookLogin: () => void;
   history: any;
-  facebookLogin: any;
 };
 
-const Regform = ({ logged, isFetching, ...rest }: RegformTypes) => {
+const Regform = ({
+  logged,
+  isFetching,
+  facebookLogin,
+  ...rest
+}: RegformTypes) => {
   useEffect(() => {
     if (logged && rest.history.location.pathname === "/login") {
       rest.history.push("/");
@@ -23,7 +28,7 @@ const Regform = ({ logged, isFetching, ...rest }: RegformTypes) => {
   });
   const toRegistrate = (event: any) => {
     event.preventDefault();
-    rest.facebookLogin();
+    facebookLogin();
   };
 
   return (

@@ -8,8 +8,10 @@ import { routes } from "../../router";
 import "./header.css";
 
 type headerTypes = {
-  userInfo: any;
-  logout: any;
+  userInfo: {
+    photo: string;
+  };
+  logout: () => void;
 };
 
 const header = ({ userInfo, logout }: headerTypes) => (

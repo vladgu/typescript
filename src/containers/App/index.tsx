@@ -20,8 +20,7 @@ type AppTypes = {
 };
 
 const App = ({ logged, userInfo, ...props }: AppTypes) => {
-  // const App = (props: any) => {
-  console.log(props);
+  // console.log(props);
   useEffect(() => {
     const isUserInfoLs = localStorage.getItem("userKey");
     if (isUserInfoLs) {
@@ -62,10 +61,11 @@ const App = ({ logged, userInfo, ...props }: AppTypes) => {
   );
 };
 
-const mapStateToProps = ({ loginReducer }: RootState) => {
+const mapStateToProps = ({ loginReducer, router }: RootState) => {
   return {
     logged: loginReducer.logged,
-    userInfo: loginReducer.userInfo
+    userInfo: loginReducer.userInfo,
+    routerRedux: router.location
   };
 };
 
