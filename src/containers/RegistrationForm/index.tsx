@@ -30,7 +30,6 @@ const Regform = ({
     event.preventDefault();
     facebookLogin();
   };
-
   return (
     <div className="d-flex justify-content-center align-items-center">
       {!isFetching ? (

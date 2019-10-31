@@ -15,7 +15,7 @@ type ContactsPageProps = {
   isFetching: boolean;
 };
 
-const throttled = throttle((value: string, foo: any) => foo(value), 1000);
+const throttled = throttle((value, foo) => foo(value), 1000);
 
 const ContactsPage = ({
   getContacts,
@@ -56,11 +56,11 @@ const ContactsPage = ({
       </div>
 
       {searchArr.length ? (
-        searchArr.map((obj: any, index: number) => (
+        searchArr.map((obj: object, index: number) => (
           <ContactPageCard key={String(index + 10)} {...obj} />
         ))
       ) : !isFetching ? (
-        contactsList.map((obj: any, index: number) => (
+        contactsList.map((obj: object, index: number) => (
           <ContactPageCard key={String(index)} {...obj} />
         ))
       ) : (

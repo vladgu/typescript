@@ -20,7 +20,6 @@ type AppTypes = {
 };
 
 const App = ({ logged, userInfo, ...props }: AppTypes) => {
-  // console.log(props);
   useEffect(() => {
     const isUserInfoLs = localStorage.getItem("userKey");
     if (isUserInfoLs) {
