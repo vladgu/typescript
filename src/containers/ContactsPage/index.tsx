@@ -62,7 +62,7 @@ const ContactsPage = ({
                 .map((obj: object, index: number) => (
                   <ContactPageCard key={String(index + 10)} {...obj} />
                 ))
-              : <div>no results</div>
+              : <h5>no results</h5>
             : contactsList.map((obj: object, index: number) => (
               <ContactPageCard key={String(index)} {...obj} />
             ))
