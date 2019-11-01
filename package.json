@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "connected-react-router": "^6.5.2",
+    "eslint-plugin-prettierx": "^0.5.0",
     "lodash": "^4.17.15",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
@@ -51,6 +52,12 @@
     "@types/redux-devtools-extension": "^2.13.2",
     "@types/redux-form": "^8.1.9",
     "@types/redux-saga": "^0.10.5",
+    "eslint": "6.1.0",
+    "eslint-config-airbnb": "18.0.1",
+    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-react": "7.14.3",
+    "eslint-plugin-react-hooks": "1.7.0",
     "prettier": "^1.18.2",
     "redux-devtools-extension": "^2.13.8"
   }

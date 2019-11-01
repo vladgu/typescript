@@ -13,7 +13,7 @@ export type State = {
 };
 
 const initialState = {
-  logged: localStorage.getItem("userKey") ? true : false,
+  logged: false,
   userInfo: null,
   isFetching: false
 };
@@ -23,7 +23,7 @@ export default (state = initialState, action: any): State => {
     case LOGOUT:
       return {
         logged: false,
-        userInfo: {},
+        userInfo: null,
         isFetching: false
       };
     case AUTH_FROM_LS:

@@ -3,35 +3,24 @@
 
 import React from "react";
 import { Route, Redirect, RouteProps } from "react-router-dom";
-import { connect } from "react-redux";
-
-import { RootState } from "../../reducers";
 
 export type PrivateRouterProps = {
   component: any;
-  logged: boolean;
 } & RouteProps;
 
 const PrivateRouter = ({
   component: Component,
-  logged,
   ...rest
 }: PrivateRouterProps) => {
   return (
     <Route
       {...rest}
       render={props => {
-        if (!logged) return <Redirect to="/login" />;
+        if (!localStorage.getItem("userKey")) return <Redirect to="/login" />;
         return <Component {...props} />;
       }}
     />
   );
 };
 
-const mapStateToProps = ({ loginReducer }: RootState) => {
-  return {
-    logged: loginReducer.logged
-  };
-};
-
-export default connect(mapStateToProps)(React.memo(PrivateRouter));
+export default PrivateRouter;

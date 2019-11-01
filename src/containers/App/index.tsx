@@ -33,27 +33,10 @@ const App = ({ logged, userInfo, ...props }: AppTypes) => {
     <>
       {logged && userInfo ? <Header userInfo={userInfo} /> : null}
       <Switch>
-        <PrivateRouter
-          exact
-          path={routes.index}
-          component={MainPage}
-          {...props}
-        />
-        <PrivateRouter
-          path={routes.profile}
-          component={ProfilePage}
-          {...props}
-        />
-        <PrivateRouter
-          path={routes.contactsDetail}
-          component={ContactCard}
-          {...props}
-        />
-        <PrivateRouter
-          path={routes.contacts}
-          component={ContactsPage}
-          {...props}
-        />
+        <PrivateRouter exact path={routes.index} component={MainPage} />
+        <PrivateRouter path={routes.profile} component={ProfilePage} />
+        <PrivateRouter path={routes.contactsDetail} component={ContactCard} />
+        <PrivateRouter path={routes.contacts} component={ContactsPage} />
         <Route path={routes.login} component={RegistrationForm} />
         <Redirect to={routes.index} />
       </Switch>

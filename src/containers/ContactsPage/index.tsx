@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import { throttle } from "lodash";
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { throttle } from 'lodash';
 
-import { getContacts } from "../../actions";
-import ContactPageCard from "../../components/ContactPageCard";
-import Loader from "../../components/Loader";
-import { RootState } from "../../reducers";
+import { getContacts } from '../../actions';
+import ContactPageCard from '../../components/ContactPageCard';
+import Loader from '../../components/Loader';
+import { RootState } from '../../reducers';
 
-import "./contactsPage.css";
+import './contactsPage.css';
 
 type ContactsPageProps = {
   getContacts: () => void;
@@ -27,19 +27,14 @@ const ContactsPage = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const [searchArr, setSearchArr] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
 
   const showUsers = (value: string) => {
-    setSearchArr(
-      contactsList.filter(
-        (elem: any) => elem.login.startsWith(value.trim()) && value.length
-      )
-    );
+    setSearchValue(value);
   };
-
   return (
     <div className="contacts-page">
-      <div className="input-group mb-3" style={{ margin: "20px" }}>
+      <div className="input-group mb-3" style={{ margin: '20px' }}>
         <div className="input-group-prepend">
           <span className="input-group-text" id="basic-addon1">
             <i className="fas fa-user"></i>
@@ -55,17 +50,23 @@ const ContactsPage = ({
         />
       </div>
 
-      {searchArr.length ? (
-        searchArr.map((obj: object, index: number) => (
-          <ContactPageCard key={String(index + 10)} {...obj} />
-        ))
-      ) : !isFetching ? (
-        contactsList.map((obj: object, index: number) => (
-          <ContactPageCard key={String(index)} {...obj} />
-        ))
-      ) : (
-        <Loader />
-      )}
+      {
+        isFetching
+          ? <Loader />
+          : searchValue
+            ? contactsList.filter((elem: any) => elem.login.startsWith(searchValue.trim()) && searchValue.length).length
+              ? contactsList
+                .filter((elem: any) =>
+                  elem.login.startsWith(searchValue.trim()) && searchValue.length
+                )
+                .map((obj: object, index: number) => (
+                  <ContactPageCard key={String(index + 10)} {...obj} />
+                ))
+              : <div>no results</div>
+            : contactsList.map((obj: object, index: number) => (
+              <ContactPageCard key={String(index)} {...obj} />
+            ))
+      }
     </div>
   );
 };
@@ -85,52 +86,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(React.memo(ContactsPage));
-
-// [
-//     {
-//         name: 'main',
-//         id: 1,
-//         parent: null
-//     },
-//     {
-//         name: 'contacts',
-//         id: 2,
-//         parent: 1
-//     },
-//     {
-//         name: 'news',
-//         id: 3,
-//         parent: 1
-//     },
-//     {
-//         name: 'info',
-//         id: 4,
-//         parent: 2
-//     }
-// ]
-
-// {
-//     id: 1
-//     name: 'main'
-//     parent: null
-//     list: [
-//         {
-//             name: 'contacts',
-//             id: 2,
-//             parent: 1,
-//             list: [
-//                 {
-//                     name: 'info',
-//                     id: 4,
-//                     parent: 2
-//                 }
-//             ]
-//         },
-//         {
-//             name: 'news',
-//             id: 3,
-//             parent: 1,
-//             list: []
-//         }
-//     ]
-// }
