@@ -29,6 +29,8 @@ const ContactsPage = ({
 
   const [searchValue, setSearchValue] = useState('');
 
+  const filteredContList = contactsList.filter((elem: any) => elem.login.startsWith(searchValue.trim()) && searchValue.length)
+
   const showUsers = (value: string) => {
     setSearchValue(value);
   };
@@ -54,14 +56,10 @@ const ContactsPage = ({
         isFetching
           ? <Loader />
           : searchValue
-            ? contactsList.filter((elem: any) => elem.login.startsWith(searchValue.trim()) && searchValue.length).length
-              ? contactsList
-                .filter((elem: any) =>
-                  elem.login.startsWith(searchValue.trim()) && searchValue.length
-                )
-                .map((obj: object, index: number) => (
-                  <ContactPageCard key={String(index + 10)} {...obj} />
-                ))
+            ? filteredContList.length
+              ? filteredContList.map((obj: object, index: number) => (
+                <ContactPageCard key={String(index + 10)} {...obj} />
+              ))
               : <h5>no results</h5>
             : contactsList.map((obj: object, index: number) => (
               <ContactPageCard key={String(index)} {...obj} />
